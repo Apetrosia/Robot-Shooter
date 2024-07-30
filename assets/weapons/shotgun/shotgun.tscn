@@ -1,0 +1,102 @@
+[gd_scene load_steps=19 format=3 uid="uid://beotlskjlwbyc"]
+
+[ext_resource type="Script" path="res://assets/weapons/gun.gd" id="1_jl32s"]
+[ext_resource type="PackedScene" uid="uid://c5gqrtln7d7pf" path="res://assets/weapons/shotgun/shotgun.glb" id="2_yi0p0"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2arud"]
+animation = &"Close"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ppfsl"]
+animation = &"Fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oyc68"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yyupn"]
+animation = &"Open"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qxgy2"]
+animation = &"Opened"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w57yg"]
+animation = &"Reload"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ccoe8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gawxq"]
+advance_mode = 2
+advance_expression = "reloading > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3wpbw"]
+advance_mode = 2
+advance_expression = "can_fire"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3irwx"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rb3xf"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "reloading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5iqhj"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5sbcp"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "!reloading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rpf22"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3q5kc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_w78dg"]
+states/Close/node = SubResource("AnimationNodeAnimation_2arud")
+states/Close/position = Vector2(486.878, 112.571)
+states/End/position = Vector2(759.429, 113.796)
+states/Fire/node = SubResource("AnimationNodeAnimation_ppfsl")
+states/Fire/position = Vector2(363.286, 189.143)
+states/Idle/node = SubResource("AnimationNodeAnimation_oyc68")
+states/Idle/position = Vector2(355.286, 101.784)
+states/Open/node = SubResource("AnimationNodeAnimation_yyupn")
+states/Open/position = Vector2(346.306, 26.8571)
+states/Opened/node = SubResource("AnimationNodeAnimation_qxgy2")
+states/Opened/position = Vector2(487.857, 32.4898)
+states/Reload/node = SubResource("AnimationNodeAnimation_w57yg")
+states/Reload/position = Vector2(614.143, 32)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ccoe8"), "Idle", "Open", SubResource("AnimationNodeStateMachineTransition_gawxq"), "Idle", "Fire", SubResource("AnimationNodeStateMachineTransition_3wpbw"), "Open", "Opened", SubResource("AnimationNodeStateMachineTransition_3irwx"), "Opened", "Reload", SubResource("AnimationNodeStateMachineTransition_rb3xf"), "Reload", "Opened", SubResource("AnimationNodeStateMachineTransition_5iqhj"), "Opened", "Close", SubResource("AnimationNodeStateMachineTransition_5sbcp"), "Close", "Idle", SubResource("AnimationNodeStateMachineTransition_rpf22"), "Fire", "Idle", SubResource("AnimationNodeStateMachineTransition_3q5kc")]
+graph_offset = Vector2(151, 68)
+
+[node name="Shotgun" type="Node3D"]
+script = ExtResource("1_jl32s")
+
+[node name="shotgun" parent="." instance=ExtResource("2_yi0p0")]
+
+[node name="Skeleton3D" parent="shotgun/Armature" index="0"]
+bones/0/rotation = Quaternion(0.679832, 5.2455e-07, 4.86258e-07, 0.733368)
+bones/0/scale = Vector3(1, 1, 1.00001)
+bones/1/rotation = Quaternion(0.239092, -5.76605e-12, 3.42026e-07, 0.970997)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-1.33039e-08, 0.999969, 0.0079267, 6.71523e-07)
+bones/3/position = Vector3(-0.0319153, -0.133542, -0.0611805)
+bones/3/rotation = Quaternion(-6.0162e-09, 0.999969, 0.0079267, 6.71523e-07)
+bones/3/scale = Vector3(0, 0, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
+root_node = NodePath("../shotgun")
+tree_root = SubResource("AnimationNodeStateMachine_w78dg")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../shotgun/AnimationPlayer")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[editable path="shotgun"]
