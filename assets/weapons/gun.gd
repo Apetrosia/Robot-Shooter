@@ -15,6 +15,7 @@ var can_fire: bool = false
 
 func fire_on():
 	can_fire = true
+	
 func fire_off():
 	can_fire = false
 	

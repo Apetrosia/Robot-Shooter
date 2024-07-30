@@ -20,7 +20,7 @@ material = SubResource("StandardMaterial3D_iymts")
 size = Vector2(20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y7iqm"]
-size = Vector3(0.5, 4, 10)
+size = Vector3(0.5, 4, 20)
 
 [node name="TestLevel" type="Node3D"]
 
