@@ -6,7 +6,7 @@ class_name Gun
 
 var reloading: int:
 	get:
-		print_debug("CHECK RELOADING ", reloading)
+		# print_debug("CHECK RELOADING ", reloading)
 		return reloading
 	set(value):
 		reloading = value
@@ -28,9 +28,8 @@ func _on_reload():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animation_tree.active = true
-	animation_tree.animation_started.connect(func(anim):
-		print_debug("ANIMATION STARTED: ", anim))
-	pass # Replace with function body.
+	# animation_tree.animation_started.connect(func(anim):
+		# print_debug("ANIMATION STARTED: ", anim))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
