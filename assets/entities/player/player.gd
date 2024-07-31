@@ -36,7 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		gun.fire_off()
 		axe.attack_off()
 	elif event.is_action_pressed("reload"):
-		gun.reload(1)
+		gun.reload(gun.reloading_amount)
 		
 	if Input.is_action_just_pressed("change"):
 		if gun.process_mode == Node.PROCESS_MODE_DISABLED:

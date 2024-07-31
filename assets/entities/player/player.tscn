@@ -10,7 +10,7 @@
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gun", "axe")]
 script = ExtResource("1_cjcxm")
 max_rotation_angle = 0.645772
-gun = NodePath("Node3D/Pistol")
+gun = NodePath("Node3D/Shotgun")
 axe = NodePath("Node3D/Axe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -25,9 +25,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.1293
 
 [node name="Shotgun" parent="Node3D" instance=ExtResource("2_84xy3")]
 process_mode = 4
-visible = false
 
 [node name="Axe" parent="Node3D" instance=ExtResource("3_fo0do")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.133753, 0, -5.96046e-08)
 
 [node name="Pistol" parent="Node3D" instance=ExtResource("4_j1rbx")]
+process_mode = 4
+visible = false

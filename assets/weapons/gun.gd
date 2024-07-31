@@ -3,10 +3,11 @@ class_name Gun
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+@export var bullet_amount = 4
+@export var reloading_amount = 4
 
 var reloading: int:
 	get:
-		print_debug("CHECK RELOADING ", reloading)
 		return reloading
 	set(value):
 		reloading = value
@@ -25,7 +26,6 @@ func reload(ammo: int):
 func _on_reload():
 	reloading-=1
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animation_tree.active = true
 	# animation_tree.animation_started.connect(func(anim):
