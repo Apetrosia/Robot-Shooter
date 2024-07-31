@@ -73,7 +73,7 @@ states/Opened/position = Vector2(487.857, 32.4898)
 states/Reload/node = SubResource("AnimationNodeAnimation_w57yg")
 states/Reload/position = Vector2(614.143, 32)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ccoe8"), "Idle", "Open", SubResource("AnimationNodeStateMachineTransition_gawxq"), "Idle", "Fire", SubResource("AnimationNodeStateMachineTransition_3wpbw"), "Open", "Opened", SubResource("AnimationNodeStateMachineTransition_3irwx"), "Opened", "Reload", SubResource("AnimationNodeStateMachineTransition_rb3xf"), "Reload", "Opened", SubResource("AnimationNodeStateMachineTransition_5iqhj"), "Opened", "Close", SubResource("AnimationNodeStateMachineTransition_5sbcp"), "Close", "Idle", SubResource("AnimationNodeStateMachineTransition_rpf22"), "Fire", "Idle", SubResource("AnimationNodeStateMachineTransition_3q5kc")]
-graph_offset = Vector2(151, 68)
+graph_offset = Vector2(69, -33)
 
 [node name="Shotgun" type="Node3D"]
 script = ExtResource("1_jl32s")
@@ -83,7 +83,7 @@ script = ExtResource("1_jl32s")
 [node name="Skeleton3D" parent="shotgun/Armature" index="0"]
 bones/0/rotation = Quaternion(0.679832, 5.2455e-07, 4.86258e-07, 0.733368)
 bones/0/scale = Vector3(1, 1, 1.00001)
-bones/1/rotation = Quaternion(0.123742, 2.22558e-09, 1.02497e-07, 0.992314)
+bones/1/rotation = Quaternion(0.0299327, -6.02322e-12, 4.28196e-08, 0.999552)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(-1.33039e-08, 0.999969, 0.0079267, 6.71523e-07)
 bones/3/position = Vector3(-0.0319153, -0.133542, -0.0611805)

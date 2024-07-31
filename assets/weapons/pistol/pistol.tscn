@@ -1,0 +1,64 @@
+[gd_scene load_steps=12 format=3 uid="uid://da3emtm7agpyx"]
+
+[ext_resource type="Script" path="res://assets/weapons/gun.gd" id="1_ggipb"]
+[ext_resource type="PackedScene" uid="uid://bv1lncm6euc0g" path="res://assets/weapons/pistol/pistol.glb" id="2_a37vf"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ppfsl"]
+animation = &"Fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oyc68"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w57yg"]
+animation = &"Reload"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ccoe8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3wpbw"]
+advance_mode = 2
+advance_expression = "can_fire"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3q5kc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_73k0n"]
+advance_mode = 2
+advance_expression = "reloading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6dvq3"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ji0hq"]
+states/End/position = Vector2(759.429, 113.796)
+states/Fire/node = SubResource("AnimationNodeAnimation_ppfsl")
+states/Fire/position = Vector2(355.286, 187.143)
+states/Idle/node = SubResource("AnimationNodeAnimation_oyc68")
+states/Idle/position = Vector2(355.286, 101.784)
+states/Reload/node = SubResource("AnimationNodeAnimation_w57yg")
+states/Reload/position = Vector2(355.286, 4)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ccoe8"), "Idle", "Fire", SubResource("AnimationNodeStateMachineTransition_3wpbw"), "Fire", "Idle", SubResource("AnimationNodeStateMachineTransition_3q5kc"), "Idle", "Reload", SubResource("AnimationNodeStateMachineTransition_73k0n"), "Reload", "Idle", SubResource("AnimationNodeStateMachineTransition_6dvq3")]
+graph_offset = Vector2(-161, -29)
+
+[node name="Pistol" type="Node3D"]
+script = ExtResource("1_ggipb")
+
+[node name="pistol" parent="." instance=ExtResource("2_a37vf")]
+
+[node name="Skeleton3D" parent="pistol/Armature" index="0"]
+bones/1/position = Vector3(-3.4424e-09, 0.0933838, 0.0144385)
+bones/1/rotation = Quaternion(0.707107, -3.09086e-08, 1.37679e-07, 0.707107)
+bones/3/position = Vector3(-0.333266, 0.334247, -0.370293)
+bones/3/rotation = Quaternion(0.51077, -2.6988e-07, -6.09091e-09, 0.859718)
+bones/3/scale = Vector3(0, 0, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
+root_node = NodePath("../pistol")
+tree_root = SubResource("AnimationNodeStateMachine_ji0hq")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../pistol/AnimationPlayer")
+
+[editable path="pistol"]

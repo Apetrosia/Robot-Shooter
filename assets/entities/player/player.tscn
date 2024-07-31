@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://0vbgcfauvifi"]
+[gd_scene load_steps=6 format=3 uid="uid://0vbgcfauvifi"]
 
 [ext_resource type="Script" path="res://assets/entities/player/player.gd" id="1_cjcxm"]
 [ext_resource type="PackedScene" uid="uid://beotlskjlwbyc" path="res://assets/weapons/shotgun/shotgun.tscn" id="2_84xy3"]
 [ext_resource type="PackedScene" uid="uid://ci1m4p3dnfnt6" path="res://assets/weapons/axe/axe.tscn" id="3_fo0do"]
+[ext_resource type="PackedScene" uid="uid://da3emtm7agpyx" path="res://assets/weapons/pistol/pistol.tscn" id="4_j1rbx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oappw"]
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gun", "axe")]
 script = ExtResource("1_cjcxm")
 max_rotation_angle = 0.645772
-gun = NodePath("Node3D/Shotgun")
-axe = NodePath("Node3D/axe")
+gun = NodePath("Node3D/Pistol")
+axe = NodePath("Node3D/Axe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13231, 0)
@@ -23,6 +24,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59823, 0)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.129383, 1.28964, -0.300975)
 
 [node name="Shotgun" parent="Node3D" instance=ExtResource("2_84xy3")]
+process_mode = 4
+visible = false
 
-[node name="axe" parent="Node3D" instance=ExtResource("3_fo0do")]
+[node name="Axe" parent="Node3D" instance=ExtResource("3_fo0do")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.133753, 0, -5.96046e-08)
+
+[node name="Pistol" parent="Node3D" instance=ExtResource("4_j1rbx")]

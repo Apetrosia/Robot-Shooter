@@ -14,11 +14,13 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var camera: Camera3D = $Camera3D
 
+
 func _ready() -> void:
-	gun.process_mode = Node.PROCESS_MODE_DISABLED
-	gun.hide()
-	axe.process_mode = Node.PROCESS_MODE_INHERIT
-	axe.show()
+	gun.process_mode = Node.PROCESS_MODE_INHERIT
+	gun.show()
+	axe.process_mode = Node.PROCESS_MODE_DISABLED
+	axe.hide()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -34,16 +36,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		gun.fire_off()
 		axe.attack_off()
 	elif event.is_action_pressed("reload"):
-		gun.reload(4)
-
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		gun.reload(1)
+		
 	if Input.is_action_just_pressed("change"):
 		if gun.process_mode == Node.PROCESS_MODE_DISABLED:
 			gun.process_mode = Node.PROCESS_MODE_INHERIT
@@ -57,6 +51,16 @@ func _physics_process(delta: float) -> void:
 		else:
 			axe.process_mode = Node.PROCESS_MODE_DISABLED
 			axe.hide()
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

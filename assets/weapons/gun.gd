@@ -6,7 +6,7 @@ class_name Gun
 
 var reloading: int:
 	get:
-		# print_debug("CHECK RELOADING ", reloading)
+		print_debug("CHECK RELOADING ", reloading)
 		return reloading
 	set(value):
 		reloading = value
@@ -30,8 +30,3 @@ func _ready() -> void:
 	animation_tree.active = true
 	# animation_tree.animation_started.connect(func(anim):
 		# print_debug("ANIMATION STARTED: ", anim))
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
