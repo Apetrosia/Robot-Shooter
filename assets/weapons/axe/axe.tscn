@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://ci1m4p3dnfnt6"]
+[gd_scene load_steps=18 format=3 uid="uid://ci1m4p3dnfnt6"]
 
 [ext_resource type="Script" path="res://assets/weapons/axe/axe.gd" id="1_8vim3"]
 [ext_resource type="Texture2D" uid="uid://d0t0gmpb3vqq" path="res://assets/weapons/axe/axe_color.png" id="1_wyhbc"]
 [ext_resource type="Texture2D" uid="uid://dw5bq2vos1xdh" path="res://assets/weapons/axe/axe_metal.png" id="2_mlxqa"]
+[ext_resource type="AudioStream" uid="uid://c7p7kqy3uk4vl" path="res://assets/weapons/axe/attack.wav" id="4_la0hr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tu2wh"]
 resource_name = "Material.001"
@@ -64,6 +65,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.645772, 0, 0), Vector3(0, 0, 0)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioStreamPlayer3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_la0hr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_7wq44"]
 resource_name = "Idle"
@@ -141,3 +157,5 @@ root_node = NodePath("../axe")
 tree_root = SubResource("AnimationNodeStateMachine_do0v2")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../axe/AnimationPlayer")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
