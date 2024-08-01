@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dv7yjyvjvkldi"]
+[gd_scene load_steps=9 format=3 uid="uid://dv7yjyvjvkldi"]
 
 [ext_resource type="BoxMesh" uid="uid://bgdob7r6vcjl" path="res://assets/levels/wall_mesh.tres" id="1_ugt0o"]
 [ext_resource type="PackedScene" uid="uid://0vbgcfauvifi" path="res://assets/entities/player/player.tscn" id="2_vqguo"]
-[ext_resource type="Script" path="res://assets/weapons/weapon_stats.gd" id="3_ujeb7"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_v63gu"]
 
@@ -22,12 +21,6 @@ size = Vector2(20, 20)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y7iqm"]
 size = Vector3(0.5, 4, 20)
-
-[sub_resource type="Resource" id="Resource_geyq3"]
-script = ExtResource("3_ujeb7")
-damage = 5.0
-bullets_per_shot = 1
-spread = 0.314159
 
 [node name="TestLevel" type="Node3D"]
 
@@ -84,15 +77,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = ExtResource("1_ugt0o")
 
 [node name="Player" parent="." instance=ExtResource("2_vqguo")]
+max_rotation_angle = 0.628319
 
 [node name="Shotgun" parent="Player/Camera3D" index="0" node_paths=PackedStringArray("shooter")]
-stats = SubResource("Resource_geyq3")
 shooter = NodePath("../..")
 
 [node name="Pistol" parent="Player/Camera3D" index="1" node_paths=PackedStringArray("shooter")]
-stats = ExtResource("3_ujeb7")
 shooter = NodePath("../..")
-bullet_amount = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.255142, 0.966904, 0, -0.966904, 0.255142, 0, 2.87797, 3.40365)

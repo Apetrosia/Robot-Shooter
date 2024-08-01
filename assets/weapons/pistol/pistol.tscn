@@ -1,8 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://da3emtm7agpyx"]
+[gd_scene load_steps=15 format=3 uid="uid://da3emtm7agpyx"]
 
 [ext_resource type="Script" path="res://assets/weapons/gun.gd" id="1_ggipb"]
 [ext_resource type="PackedScene" uid="uid://bv1lncm6euc0g" path="res://assets/weapons/pistol/pistol.glb" id="2_a37vf"]
 [ext_resource type="PackedScene" uid="uid://dlrynqlvcsweg" path="res://assets/weapons/bullet/bullet.tscn" id="2_dnmwx"]
+[ext_resource type="Script" path="res://assets/weapons/weapon_stats.gd" id="3_damaq"]
+
+[sub_resource type="Resource" id="Resource_mud7v"]
+script = ExtResource("3_damaq")
+damage = 1.0
+bullets_per_shot = 1
+spread = 0.0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ppfsl"]
 animation = &"Fire"
@@ -47,16 +54,15 @@ graph_offset = Vector2(-161, -29)
 script = ExtResource("1_ggipb")
 bullet_spawner = NodePath("Marker3D")
 bullet_scene = ExtResource("2_dnmwx")
+stats = SubResource("Resource_mud7v")
 reloading_amount = 1
 
 [node name="pistol" parent="." instance=ExtResource("2_a37vf")]
 
 [node name="Skeleton3D" parent="pistol/Armature" index="0"]
 bones/1/rotation = Quaternion(0.707107, -3.09086e-08, 1.37679e-07, 0.707107)
-bones/2/position = Vector3(2.03861e-08, -0.0913517, -0.0855057)
-bones/2/rotation = Quaternion(0.246743, 3.08037e-08, 6.66713e-08, 0.969081)
-bones/3/position = Vector3(2.03627e-08, 0.115909, -0.0391952)
-bones/3/rotation = Quaternion(0.700665, -2.23976e-07, -8.3554e-09, 0.71349)
+bones/3/position = Vector3(-0.0139942, 0.20042, -0.0195382)
+bones/3/rotation = Quaternion(0.51077, -2.6988e-07, -6.09091e-09, 0.859718)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false

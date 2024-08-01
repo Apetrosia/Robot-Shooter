@@ -8,8 +8,8 @@
 [sub_resource type="Resource" id="Resource_fdplg"]
 script = ExtResource("3_2ukqk")
 damage = 1.0
-bullets_per_shot = 1
-spread = 0.314159
+bullets_per_shot = 6
+spread = 0.0523599
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2arud"]
 animation = &"Close"
