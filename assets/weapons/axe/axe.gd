@@ -5,11 +5,11 @@ class_name Axe
 
 var can_attack: bool = false
 
-func attack_on():
+func fire_on():
 	can_attack = true
 	print("CAN ATTACK ", can_attack)
 	
-func attack_off():
+func fire_off():
 	can_attack = false
 
 # Called when the node enters the scene tree for the first time.

@@ -52,14 +52,13 @@ func _spawn_bullet() -> Bullet:
 	return bullet
 
 func _on_reload():
-	reloading-=1
+	reloading -= 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	assert(bullet_spawner != null, "NE UKAZALI BULLET_SPAWNER")
 	
 	animation_tree.active = true
-	animation_tree.animation_started.connect(func(anim):
-		print_debug("ANIMATION STARTED: ", anim))
-	pass # Replace with function body.
+	#animation_tree.animation_started.connect(func(anim):
+		#print_debug("ANIMATION STARTED: ", anim))
 

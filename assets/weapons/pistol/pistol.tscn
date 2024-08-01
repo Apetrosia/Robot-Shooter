@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://da3emtm7agpyx"]
+[gd_scene load_steps=13 format=3 uid="uid://da3emtm7agpyx"]
 
 [ext_resource type="Script" path="res://assets/weapons/gun.gd" id="1_ggipb"]
 [ext_resource type="PackedScene" uid="uid://bv1lncm6euc0g" path="res://assets/weapons/pistol/pistol.glb" id="2_a37vf"]
+[ext_resource type="PackedScene" uid="uid://dlrynqlvcsweg" path="res://assets/weapons/bullet/bullet.tscn" id="2_dnmwx"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ppfsl"]
 animation = &"Fire"
@@ -25,7 +26,7 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_73k0n"]
 advance_mode = 2
-advance_expression = "reloading"
+advance_expression = "reloading > 0"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6dvq3"]
 switch_mode = 2
@@ -42,8 +43,10 @@ states/Reload/position = Vector2(355.286, 4)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ccoe8"), "Idle", "Fire", SubResource("AnimationNodeStateMachineTransition_3wpbw"), "Fire", "Idle", SubResource("AnimationNodeStateMachineTransition_3q5kc"), "Idle", "Reload", SubResource("AnimationNodeStateMachineTransition_73k0n"), "Reload", "Idle", SubResource("AnimationNodeStateMachineTransition_6dvq3")]
 graph_offset = Vector2(-161, -29)
 
-[node name="Pistol" type="Node3D"]
+[node name="Pistol" type="Node3D" node_paths=PackedStringArray("bullet_spawner")]
 script = ExtResource("1_ggipb")
+bullet_spawner = NodePath("Marker3D")
+bullet_scene = ExtResource("2_dnmwx")
 reloading_amount = 1
 
 [node name="pistol" parent="." instance=ExtResource("2_a37vf")]
@@ -53,8 +56,7 @@ bones/1/rotation = Quaternion(0.707107, -3.09086e-08, 1.37679e-07, 0.707107)
 bones/2/position = Vector3(2.03861e-08, -0.0913517, -0.0855057)
 bones/2/rotation = Quaternion(0.246743, 3.08037e-08, 6.66713e-08, 0.969081)
 bones/3/position = Vector3(2.03627e-08, 0.115909, -0.0391952)
-bones/3/rotation = Quaternion(0.51077, -2.6988e-07, -6.09091e-09, 0.859718)
-bones/3/scale = Vector3(0, 0, 0)
+bones/3/rotation = Quaternion(0.700665, -2.23976e-07, -8.3554e-09, 0.71349)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
@@ -64,5 +66,8 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../pistol/AnimationPlayer")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0771178, 0.227656)
 
 [editable path="pistol"]

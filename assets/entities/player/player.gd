@@ -9,17 +9,19 @@ const JUMP_VELOCITY = 4.5
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var mouse_sensivity: float = 0.01
 @export_range(0., 180., 0.5, "radians_as_degrees") var max_rotation_angle: float
-@export var gun: Gun
-@export var axe: Axe
+@export var weapons: Array[Node3D]
+var active_weapon_id: int = 0
 
 @onready var camera: Camera3D = $Camera3D
 
 
 func _ready() -> void:
-	gun.process_mode = Node.PROCESS_MODE_INHERIT
-	gun.show()
-	axe.process_mode = Node.PROCESS_MODE_DISABLED
-	axe.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_INHERIT
+	weapons[active_weapon_id].show()
+	for i in range(1, weapons.size()):
+		weapons[i].process_mode = Node.PROCESS_MODE_DISABLED
+		weapons[i].hide()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -30,27 +32,31 @@ func _unhandled_input(event: InputEvent) -> void:
 		var cam_rot = camera.rotation.x
 		camera.rotation.x = clampf(cam_rot - shift.y, -max_rotation_angle, max_rotation_angle)
 	elif event.is_action_pressed("fire"):
-		gun.fire_on()
-		axe.attack_on()
+		weapons[active_weapon_id].fire_on()
 	elif event.is_action_released("fire"):
-		gun.fire_off()
-		axe.attack_off()
+		weapons[active_weapon_id].fire_off()
 	elif event.is_action_pressed("reload"):
-		gun.reload(gun.reloading_amount)
+		# TODO проверка, не топор ли
+		weapons[active_weapon_id].reload(weapons[active_weapon_id].reloading_amount)
 		
-	if Input.is_action_just_pressed("change"):
-		if gun.process_mode == Node.PROCESS_MODE_DISABLED:
-			gun.process_mode = Node.PROCESS_MODE_INHERIT
-			gun.show()
-		else:
-			gun.process_mode = Node.PROCESS_MODE_DISABLED
-			gun.hide()
-		if axe.process_mode == Node.PROCESS_MODE_DISABLED:
-			axe.process_mode = Node.PROCESS_MODE_INHERIT
-			axe.show()
-		else:
-			axe.process_mode = Node.PROCESS_MODE_DISABLED
-			axe.hide()
+	if Input.is_action_just_pressed("shotgun"):
+		weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_DISABLED
+		weapons[active_weapon_id].hide();
+		active_weapon_id = 0
+		weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_INHERIT
+		weapons[active_weapon_id].show();
+	if Input.is_action_just_pressed("pistol"):
+		weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_DISABLED
+		weapons[active_weapon_id].hide();
+		active_weapon_id = 1
+		weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_INHERIT
+		weapons[active_weapon_id].show();
+	if Input.is_action_just_pressed("axe"):
+		weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_DISABLED
+		weapons[active_weapon_id].hide();
+		active_weapon_id = 2
+		weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_INHERIT
+		weapons[active_weapon_id].show();
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

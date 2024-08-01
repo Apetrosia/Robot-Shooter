@@ -7,11 +7,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oappw"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gun", "axe")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("weapons")]
 script = ExtResource("1_cjcxm")
 max_rotation_angle = 0.645772
-gun = NodePath("Node3D/Pistol")
-axe = NodePath("Node3D/Axe")
+weapons = [NodePath("Camera3D/Shotgun"), NodePath("Camera3D/Pistol"), NodePath("Camera3D/Axe")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13231, 0)
@@ -20,16 +19,18 @@ shape = SubResource("CapsuleShape3D_oappw")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59823, 0)
 
+[node name="Shotgun" parent="Camera3D" instance=ExtResource("2_84xy3")]
+process_mode = 4
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.129383, -0.30859, -0.300975)
+visible = false
+
+[node name="Pistol" parent="Camera3D" instance=ExtResource("4_j1rbx")]
+process_mode = 4
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.129383, -0.30859, -0.300975)
+visible = false
+
+[node name="Axe" parent="Camera3D" instance=ExtResource("3_fo0do")]
+transform = Transform3D(-0.4, 0, -3.49691e-08, 0, 0.4, 0, 3.49691e-08, 0, -0.4, 0.263136, -0.30859, -0.300975)
+
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.129383, 1.28964, -0.300975)
-
-[node name="Shotgun" parent="Node3D" instance=ExtResource("2_84xy3")]
-process_mode = 4
-visible = false
-
-[node name="Axe" parent="Node3D" instance=ExtResource("3_fo0do")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.133753, 0, -5.96046e-08)
-
-[node name="Pistol" parent="Node3D" instance=ExtResource("4_j1rbx")]
-process_mode = 4
-visible = false

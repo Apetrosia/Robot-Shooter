@@ -78,5 +78,14 @@ mesh = ExtResource("1_ugt0o")
 
 [node name="Player" parent="." instance=ExtResource("2_vqguo")]
 
+[node name="Shotgun" parent="Player/Camera3D" index="0" node_paths=PackedStringArray("shooter")]
+shooter = NodePath("../..")
+
+[node name="Pistol" parent="Player/Camera3D" index="1" node_paths=PackedStringArray("shooter")]
+shooter = NodePath("../..")
+bullet_amount = 1
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.255142, 0.966904, 0, -0.966904, 0.255142, 0, 2.87797, 3.40365)
+
+[editable path="Player"]

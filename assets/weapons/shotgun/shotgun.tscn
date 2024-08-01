@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://beotlskjlwbyc"]
+[gd_scene load_steps=20 format=3 uid="uid://beotlskjlwbyc"]
 
 [ext_resource type="Script" path="res://assets/weapons/gun.gd" id="1_jl32s"]
+[ext_resource type="PackedScene" uid="uid://dlrynqlvcsweg" path="res://assets/weapons/bullet/bullet.tscn" id="2_y3dqa"]
 [ext_resource type="PackedScene" uid="uid://c5gqrtln7d7pf" path="res://assets/weapons/shotgun/shotgun.glb" id="2_yi0p0"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2arud"]
@@ -75,20 +76,21 @@ states/Reload/position = Vector2(614.143, 32)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ccoe8"), "Idle", "Open", SubResource("AnimationNodeStateMachineTransition_gawxq"), "Idle", "Fire", SubResource("AnimationNodeStateMachineTransition_3wpbw"), "Open", "Opened", SubResource("AnimationNodeStateMachineTransition_3irwx"), "Opened", "Reload", SubResource("AnimationNodeStateMachineTransition_rb3xf"), "Reload", "Opened", SubResource("AnimationNodeStateMachineTransition_5iqhj"), "Opened", "Close", SubResource("AnimationNodeStateMachineTransition_5sbcp"), "Close", "Idle", SubResource("AnimationNodeStateMachineTransition_rpf22"), "Fire", "Idle", SubResource("AnimationNodeStateMachineTransition_3q5kc")]
 graph_offset = Vector2(69, -33)
 
-[node name="Shotgun" type="Node3D"]
+[node name="Shotgun" type="Node3D" node_paths=PackedStringArray("bullet_spawner")]
 script = ExtResource("1_jl32s")
+bullet_spawner = NodePath("Marker3D")
+bullet_scene = ExtResource("2_y3dqa")
 
 [node name="shotgun" parent="." instance=ExtResource("2_yi0p0")]
 
 [node name="Skeleton3D" parent="shotgun/Armature" index="0"]
 bones/0/rotation = Quaternion(0.679832, 5.2455e-07, 4.86258e-07, 0.733368)
 bones/0/scale = Vector3(1, 1, 1.00001)
-bones/1/rotation = Quaternion(0.239092, -5.76605e-12, 3.42026e-07, 0.970997)
+bones/1/rotation = Quaternion(0.0299327, -5.99145e-12, 4.28196e-08, 0.999552)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/rotation = Quaternion(-1.33039e-08, 0.999969, 0.0079267, 6.71523e-07)
-bones/3/position = Vector3(0.0595422, -0.26078, -0.1634)
+bones/3/position = Vector3(-0.0319153, -0.133542, -0.0611805)
 bones/3/rotation = Quaternion(-6.0162e-09, 0.999969, 0.0079267, 6.71523e-07)
-bones/3/scale = Vector3(0, 0, 0)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
@@ -98,5 +100,8 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../shotgun/AnimationPlayer")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0610475, 0.622193)
 
 [editable path="shotgun"]
