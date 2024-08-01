@@ -20,13 +20,6 @@ var reloading: int:
 
 var can_fire: bool = false
 
-
-static func da() -> void:
-	pass
-	
-	# Gun.da()
-
-
 func fire_on():
 	can_fire = true
 
@@ -59,7 +52,6 @@ func _ready() -> void:
 	assert(bullet_spawner != null, "NE UKAZALI BULLET_SPAWNER")
 	
 	animation_tree.active = true
-	animation_tree.animation_started.connect(func(anim):
-		print_debug("ANIMATION STARTED: ", anim))
-	pass # Replace with function body.
+	#animation_tree.animation_started.connect(func(anim):
+		#print_debug("ANIMATION STARTED: ", anim))
 

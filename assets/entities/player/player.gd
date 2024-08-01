@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+class_name Player
 
 const SPEED = 5.0
 const ACCELERATION = 1.75
@@ -12,7 +12,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var gun: Gun
 @export var axe: Axe
 
-@onready var camera: Camera3D = $Camera3D
+@onready var camera: Camera3D = %Camera3D
 
 
 func _ready() -> void:
@@ -23,14 +23,9 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if event is InputEventMouseMotion:
-		var shift: Vector2 = event.relative * mouse_sensivity
-		rotate_y(-shift.x)
-		var cam_rot = camera.rotation.x
-		camera.rotation.x = clampf(cam_rot - shift.y, -max_rotation_angle, max_rotation_angle)
-	elif event.is_action_pressed("fire"):
+	if event.is_action_pressed("fire"):
 		gun.fire_on()
+		gun._on_fire()
 		axe.attack_on()
 	elif event.is_action_released("fire"):
 		gun.fire_off()
@@ -72,7 +67,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		
 	if Input.is_action_pressed("run"):
-		velocity *= ACCELERATION
+		velocity.x *= ACCELERATION
+		velocity.z *= ACCELERATION
 
 	move_and_slide()

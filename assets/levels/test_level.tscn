@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dv7yjyvjvkldi"]
+[gd_scene load_steps=9 format=3 uid="uid://dshcjyud0r6oa"]
 
 [ext_resource type="BoxMesh" uid="uid://bgdob7r6vcjl" path="res://assets/levels/wall_mesh.tres" id="1_ugt0o"]
 [ext_resource type="PackedScene" uid="uid://0vbgcfauvifi" path="res://assets/entities/player/player.tscn" id="2_vqguo"]
