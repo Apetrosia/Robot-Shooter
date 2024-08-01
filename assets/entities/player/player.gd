@@ -1,5 +1,5 @@
 extends CharacterBody3D
-
+class_name Player
 
 const SPEED = 5.0
 const ACCELERATION = 1.75
@@ -12,7 +12,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var weapons: Array[Node3D]
 var active_weapon_id: int = 0
 
-@onready var camera: Camera3D = $Camera3D
+@onready var camera: Camera3D = %Camera3D
 
 
 func _ready() -> void:
@@ -78,7 +78,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		
 	if Input.is_action_pressed("run"):
-		velocity *= ACCELERATION
+		velocity.x *= ACCELERATION
+		velocity.z *= ACCELERATION
 
 	move_and_slide()
