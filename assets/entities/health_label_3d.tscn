@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cce81vjur4lbh"]
+
+[ext_resource type="Script" path="res://assets/entities/robot-2/HPLabel.gd" id="1_x2g5f"]
+
+[node name="HealthLabel3D" type="Label3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9024, 0)
+script = ExtResource("1_x2g5f")

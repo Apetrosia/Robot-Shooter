@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=2 format=3 uid="uid://c0apwmqgm6gml"]
+
+[ext_resource type="Script" path="res://assets/weapons/weapon_stats.gd" id="1_g8afn"]
+
+[resource]
+script = ExtResource("1_g8afn")
+damage = 5.0
+bullets_per_shot = 10
+spread = 0.314159
