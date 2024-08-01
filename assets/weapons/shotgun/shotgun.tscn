@@ -1,8 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://beotlskjlwbyc"]
+[gd_scene load_steps=22 format=3 uid="uid://beotlskjlwbyc"]
 
 [ext_resource type="Script" path="res://assets/weapons/gun.gd" id="1_jl32s"]
 [ext_resource type="PackedScene" uid="uid://dlrynqlvcsweg" path="res://assets/weapons/bullet/bullet.tscn" id="2_y3dqa"]
 [ext_resource type="PackedScene" uid="uid://c5gqrtln7d7pf" path="res://assets/weapons/shotgun/shotgun.glb" id="2_yi0p0"]
+[ext_resource type="Script" path="res://assets/weapons/weapon_stats.gd" id="3_2ukqk"]
+
+[sub_resource type="Resource" id="Resource_fdplg"]
+script = ExtResource("3_2ukqk")
+damage = 1.0
+bullets_per_shot = 1
+spread = 0.314159
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2arud"]
 animation = &"Close"
@@ -80,6 +87,7 @@ graph_offset = Vector2(69, -33)
 script = ExtResource("1_jl32s")
 bullet_spawner = NodePath("Marker3D")
 bullet_scene = ExtResource("2_y3dqa")
+stats = SubResource("Resource_fdplg")
 
 [node name="shotgun" parent="." instance=ExtResource("2_yi0p0")]
 

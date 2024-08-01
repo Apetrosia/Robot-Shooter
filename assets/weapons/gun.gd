@@ -20,13 +20,6 @@ var reloading: int:
 
 var can_fire: bool = false
 
-
-static func da() -> void:
-	pass
-	
-	# Gun.da()
-
-
 func fire_on():
 	can_fire = true
 
