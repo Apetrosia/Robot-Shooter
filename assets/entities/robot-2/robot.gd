@@ -13,6 +13,8 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var _shtoto := 1
+
 @onready var hp: float = max_hp
 
 
@@ -21,6 +23,9 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	get_node_or_null(^"HealthComponent")
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 
 	var direction := global_position.direction_to(player.global_position)
 	if direction:
