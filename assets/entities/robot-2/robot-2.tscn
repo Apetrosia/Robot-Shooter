@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://j6rf88mxs405"]
+
+[ext_resource type="Script" path="res://assets/entities/robot-2/robot.gd" id="1_ebgu2"]
+[ext_resource type="PackedScene" uid="uid://bgagsfxxbjrba" path="res://assets/entities/robot-2/robot-2.glb" id="2_fybe6"]
+[ext_resource type="PackedScene" uid="uid://cce81vjur4lbh" path="res://assets/entities/health_label_3d.tscn" id="3_osmp3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ntybx"]
+radius = 0.181416
+height = 0.80608
+
+[node name="Robot-2" type="CharacterBody3D"]
+script = ExtResource("1_ebgu2")
+max_hp = 5.0
+
+[node name="robot-2" parent="." instance=ExtResource("2_fybe6")]
+
+[node name="Skeleton3D" parent="robot-2/Armature" index="0"]
+bones/4/rotation = Quaternion(1.62921e-07, 0, 1, 0)
+bones/5/rotation = Quaternion(0.663114, 6.00823e-07, 1.58101e-07, 0.748519)
+bones/6/rotation = Quaternion(-1.19355e-07, 0.711691, 0.702493, 5.37311e-08)
+bones/7/rotation = Quaternion(-0.00649076, -0.000409265, -0.0629221, 0.997997)
+bones/8/rotation = Quaternion(-4.5975e-10, -2.65448e-08, 0.167517, 0.985869)
+bones/9/rotation = Quaternion(-0.00641826, 0.00105039, 0.161515, 0.986849)
+bones/10/rotation = Quaternion(-2.28598e-09, 2.05055e-08, -0.169198, 0.985582)
+bones/11/rotation = Quaternion(-9.36008e-09, 0.711691, 0.702493, 5.37311e-08)
+bones/13/rotation = Quaternion(2.8213e-07, 0, 1, 0)
+bones/14/rotation = Quaternion(0.663114, 8.68515e-07, 2.37152e-07, 0.748519)
+bones/15/rotation = Quaternion(-1.19355e-07, 0.711691, 0.702493, 5.37311e-08)
+bones/16/rotation = Quaternion(-0.00649077, 0.000409171, 0.0629221, 0.997997)
+bones/17/rotation = Quaternion(-4.75888e-10, 2.65646e-08, -0.167517, 0.985869)
+bones/18/rotation = Quaternion(-0.00641825, -0.00105049, -0.161515, 0.986849)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444023, 0)
+shape = SubResource("CapsuleShape3D_ntybx")
+
+[node name="HealthLabel3D" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_osmp3")]
+entity = NodePath("..")
+
+[editable path="robot-2"]
