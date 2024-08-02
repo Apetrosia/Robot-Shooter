@@ -36,8 +36,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_released("fire"):
 		weapons[active_weapon_id].fire_off()
 	elif event.is_action_pressed("reload"):
-		# TODO проверка, не топор ли
-		weapons[active_weapon_id].reload(weapons[active_weapon_id].reloading_amount)
+		if active_weapon_id != 2:
+			weapons[active_weapon_id].reload(weapons[active_weapon_id].reloading_amount)
 		
 	if Input.is_action_just_pressed("shotgun"):
 		weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_DISABLED

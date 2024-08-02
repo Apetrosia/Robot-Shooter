@@ -1,20 +1,27 @@
 extends Node
 
-@export var levels: Array[PackedScene]
+
+@export var campaign: Campaign
+@export var game_winning_scene: PackedScene
 @onready var level_root: Node = $Level
 
 var current_level = -1
+var current_level_node: Level
+
+
 func _ready() -> void:
 	next_level()
+	
 
 func next_level():
 	current_level+=1
-	for child in level_root.get_children():
-		level_root.remove_child(child)
-	var lvl = levels[current_level].instantiate() as Level
+	if current_level >= campaign.levels.size():
+		print_debug(game_winning_scene)
+		get_tree().change_scene_to_packed.bind(game_winning_scene).call_deferred()
+		return
+	if current_level_node:
+		level_root.remove_child(current_level_node)
+	var lvl = campaign.levels[current_level].instantiate() as Level
 	level_root.add_child(lvl)
 	lvl.finished.connect(next_level)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	current_level_node = lvl
