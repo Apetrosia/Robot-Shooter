@@ -6,7 +6,7 @@ extends Node
 var current_level = -1
 func _ready() -> void:
 	next_level()
-	
+
 func next_level():
 	current_level+=1
 	for child in level_root.get_children():

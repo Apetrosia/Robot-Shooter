@@ -6,4 +6,4 @@
 script = ExtResource("1_uelr8")
 damage = 10.0
 bullets_per_shot = 1
-spread = 0.314159
+spread = 0.0
