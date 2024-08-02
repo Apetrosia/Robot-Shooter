@@ -59,7 +59,6 @@ bones/3/position = Vector3(-0.0139942, 0.20042, -0.0195382)
 bones/3/rotation = Quaternion(0.51077, -2.6988e-07, -6.09091e-09, 0.859718)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-active = false
 root_node = NodePath("../pistol")
 tree_root = SubResource("AnimationNodeStateMachine_ji0hq")
 advance_expression_base_node = NodePath("..")

@@ -81,6 +81,9 @@ mesh = ExtResource("1_ugt0o")
 
 [node name="Player" parent="." instance=ExtResource("2_vqguo")]
 
+[node name="Pistol" parent="Player/Camera3D/Node3D" index="2" node_paths=PackedStringArray("shooter")]
+shooter = NodePath("../../..")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.255142, 0.966904, 0, -0.966904, 0.255142, 0, 2.87797, 3.40365)
 
@@ -89,3 +92,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.31322, 0, -6.70955)
 player = NodePath("../Player")
 
 [connection signal="died" from="Robot-2" to="." method="_on_level_finished"]
+
+[editable path="Player"]

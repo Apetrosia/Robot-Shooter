@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://j6rf88mxs405"]
+[gd_scene load_steps=7 format=3 uid="uid://j6rf88mxs405"]
 
 [ext_resource type="Script" path="res://assets/entities/robot-2/robot.gd" id="1_ebgu2"]
+[ext_resource type="Script" path="res://assets/entities/robot-2/health_component.gd" id="2_dmhep"]
 [ext_resource type="PackedScene" uid="uid://bgagsfxxbjrba" path="res://assets/entities/robot-2/robot-3.glb" id="2_fybe6"]
+[ext_resource type="PackedScene" uid="uid://ci1m4p3dnfnt6" path="res://assets/weapons/axe/axe.tscn" id="3_iiqdg"]
 [ext_resource type="PackedScene" uid="uid://cce81vjur4lbh" path="res://assets/entities/health_label_3d.tscn" id="3_osmp3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ntybx"]
@@ -11,6 +13,9 @@ height = 0.80608
 [node name="Robot-2" type="CharacterBody3D"]
 script = ExtResource("1_ebgu2")
 max_hp = 5.0
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_dmhep")
 
 [node name="robot-2" parent="." instance=ExtResource("2_fybe6")]
 
@@ -38,15 +43,18 @@ bones/18/rotation = Quaternion(-0.00641825, -0.00105049, -0.161515, 0.986849)
 bones/20/position = Vector3(0.383124, -0.323379, -0.402464)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="robot-2/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.87816, -0.398135, -0.265183, -0.477024, 0.687339, 0.547734, -0.0358017, 0.607497, -0.793514, -0.0297327, 0.479971, 0.38325)
-bone_name = "ArmTarget.L"
-bone_idx = 15
+transform = Transform3D(0.97994, 0.03491, -0.196213, 0.155754, -0.748378, 0.644725, -0.124334, -0.662353, -0.738803, -0.0505631, 0.504713, 0.469652)
+bone_name = "Item"
+bone_idx = 11
+
+[node name="Axe" parent="robot-2/Armature/Skeleton3D/BoneAttachment3D" instance=ExtResource("3_iiqdg")]
+transform = Transform3D(0.5, 0, 0, 0, -0.0218097, -0.499524, 0, 0.499524, -0.0218097, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.444023, 0)
 shape = SubResource("CapsuleShape3D_ntybx")
 
 [node name="HealthLabel3D" parent="." node_paths=PackedStringArray("entity") instance=ExtResource("3_osmp3")]
-entity = NodePath("..")
+entity = NodePath("../HealthComponent")
 
 [editable path="robot-2"]
