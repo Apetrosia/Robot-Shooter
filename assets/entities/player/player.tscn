@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://ohap0wr7hitl" path="res://addons/mouse_look_component/mouse_look_component.tscn" id="2_kopkw"]
 [ext_resource type="PackedScene" uid="uid://ci1m4p3dnfnt6" path="res://assets/weapons/axe/axe.tscn" id="3_fo0do"]
 [ext_resource type="PackedScene" uid="uid://da3emtm7agpyx" path="res://assets/weapons/pistol/pistol.tscn" id="4_j1rbx"]
+[ext_resource type="PackedScene" uid="uid://cce81vjur4lbh" path="res://assets/entities/health_label_3d.tscn" id="5_wfg2a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oappw"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("weapons")]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_cjcxm")
 weapons = [NodePath("Camera3D/Node3D/Shotgun"), NodePath("Camera3D/Node3D/Pistol"), NodePath("Camera3D/Node3D/Axe")]
 
@@ -41,4 +42,11 @@ visible = false
 [node name="Pistol" parent="Camera3D/Node3D" node_paths=PackedStringArray("shooter") instance=ExtResource("4_j1rbx")]
 process_mode = 4
 visible = false
-shooter = NodePath("../../..")
+
+[node name="Axe" parent="Camera3D" instance=ExtResource("3_fo0do")]
+transform = Transform3D(-0.4, 0, -3.49691e-08, 0, 0.4, 0, 3.49691e-08, 0, -0.4, 0.263136, -0.30859, -0.300975)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.129383, 1.28964, -0.300975)
+
+[node name="HealthLabel3D" parent="." instance=ExtResource("5_wfg2a")]

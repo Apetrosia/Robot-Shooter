@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ci1m4p3dnfnt6"]
+[gd_scene load_steps=19 format=3 uid="uid://ci1m4p3dnfnt6"]
 
 [ext_resource type="Script" path="res://assets/weapons/axe/axe.gd" id="1_8vim3"]
 [ext_resource type="Texture2D" uid="uid://d0t0gmpb3vqq" path="res://assets/weapons/axe/axe_color.png" id="1_wyhbc"]
@@ -138,6 +138,10 @@ states/Idle/position = Vector2(328, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_fpihv"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_hrv47"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_sqytb")]
 graph_offset = Vector2(-57, -23)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mtc4c"]
+radius = 0.212473
+height = 0.585259
+
 [node name="Axe" type="Node3D"]
 script = ExtResource("1_8vim3")
 
@@ -159,3 +163,9 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../axe/AnimationPlayer")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.995118, -0.0986773, -0.00184473, 0, 0.0186914, -0.999825, 0.0986945, 0.994944, 0.0186001, -0.00218578, 0.90622, 0)
+shape = SubResource("CapsuleShape3D_mtc4c")

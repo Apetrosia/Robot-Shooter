@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 signal died
 
 const SPEED = 3.0
@@ -33,8 +32,6 @@ func _physics_process(delta: float) -> void:
 	global_rotation.y = rotate_toward(global_rotation.y, tar_angle, 0.1) 
 	move_and_slide()
 
-func take_damage(value: float, source):
-	hp-=value
-	if hp <= 0:
-		died.emit()
-		queue_free()
+func die():
+	died.emit()
+	queue_free()

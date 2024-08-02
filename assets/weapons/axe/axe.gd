@@ -2,6 +2,8 @@ extends Node3D
 class_name Axe
 
 @onready var animation_tree: AnimationTree = $AnimationTree
+@export var damage: float = 1
+@export var shooter: CharacterBody3D
 
 var can_attack: bool = false
 
