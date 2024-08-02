@@ -1,15 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://beotlskjlwbyc"]
+[gd_scene load_steps=21 format=3 uid="uid://beotlskjlwbyc"]
 
 [ext_resource type="Script" path="res://assets/weapons/gun.gd" id="1_jl32s"]
-[ext_resource type="PackedScene" uid="uid://dlrynqlvcsweg" path="res://assets/weapons/bullet/bullet.tscn" id="2_y3dqa"]
+[ext_resource type="PackedScene" uid="uid://dlrynqlvcsweg" path="res://assets/weapons/bullet/bullet.tscn" id="2_aj6bx"]
 [ext_resource type="PackedScene" uid="uid://c5gqrtln7d7pf" path="res://assets/weapons/shotgun/shotgun.glb" id="2_yi0p0"]
-[ext_resource type="Script" path="res://assets/weapons/weapon_stats.gd" id="3_2ukqk"]
-
-[sub_resource type="Resource" id="Resource_fdplg"]
-script = ExtResource("3_2ukqk")
-damage = 1.0
-bullets_per_shot = 6
-spread = 0.0523599
+[ext_resource type="Resource" uid="uid://c0apwmqgm6gml" path="res://assets/weapons/shotgun/stats/shotgun_basic.tres" id="3_jruus"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2arud"]
 animation = &"Close"
@@ -81,13 +75,13 @@ states/Opened/position = Vector2(487.857, 32.4898)
 states/Reload/node = SubResource("AnimationNodeAnimation_w57yg")
 states/Reload/position = Vector2(614.143, 32)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ccoe8"), "Idle", "Open", SubResource("AnimationNodeStateMachineTransition_gawxq"), "Idle", "Fire", SubResource("AnimationNodeStateMachineTransition_3wpbw"), "Open", "Opened", SubResource("AnimationNodeStateMachineTransition_3irwx"), "Opened", "Reload", SubResource("AnimationNodeStateMachineTransition_rb3xf"), "Reload", "Opened", SubResource("AnimationNodeStateMachineTransition_5iqhj"), "Opened", "Close", SubResource("AnimationNodeStateMachineTransition_5sbcp"), "Close", "Idle", SubResource("AnimationNodeStateMachineTransition_rpf22"), "Fire", "Idle", SubResource("AnimationNodeStateMachineTransition_3q5kc")]
-graph_offset = Vector2(69, -33)
+graph_offset = Vector2(-54, -48)
 
 [node name="Shotgun" type="Node3D" node_paths=PackedStringArray("bullet_spawner")]
 script = ExtResource("1_jl32s")
-bullet_spawner = NodePath("Marker3D")
-bullet_scene = ExtResource("2_y3dqa")
-stats = SubResource("Resource_fdplg")
+bullet_spawner = NodePath("BulletShotLocation")
+bullet_scene = ExtResource("2_aj6bx")
+stats = ExtResource("3_jruus")
 
 [node name="shotgun" parent="." instance=ExtResource("2_yi0p0")]
 
@@ -96,9 +90,10 @@ bones/0/rotation = Quaternion(0.679832, 5.2455e-07, 4.86258e-07, 0.733368)
 bones/0/scale = Vector3(1, 1, 1.00001)
 bones/1/rotation = Quaternion(0.0299327, -5.99145e-12, 4.28196e-08, 0.999552)
 bones/1/scale = Vector3(1, 1, 1)
+bones/2/position = Vector3(-0.0407333, -0.141655, -0.0649217)
 bones/2/rotation = Quaternion(-1.33039e-08, 0.999969, 0.0079267, 6.71523e-07)
 bones/3/position = Vector3(-0.0319153, -0.133542, -0.0611805)
-bones/3/rotation = Quaternion(-6.0162e-09, 0.999969, 0.0079267, 6.71523e-07)
+bones/3/scale = Vector3(1, 1, 1)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
@@ -109,7 +104,7 @@ anim_player = NodePath("../shotgun/AnimationPlayer")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0610475, 0.622193)
+[node name="BulletShotLocation" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0680017, 0.732361)
 
 [editable path="shotgun"]

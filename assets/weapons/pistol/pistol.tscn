@@ -1,15 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://da3emtm7agpyx"]
+[gd_scene load_steps=14 format=3 uid="uid://da3emtm7agpyx"]
 
 [ext_resource type="Script" path="res://assets/weapons/gun.gd" id="1_ggipb"]
 [ext_resource type="PackedScene" uid="uid://bv1lncm6euc0g" path="res://assets/weapons/pistol/pistol.glb" id="2_a37vf"]
-[ext_resource type="PackedScene" uid="uid://dlrynqlvcsweg" path="res://assets/weapons/bullet/bullet.tscn" id="2_dnmwx"]
-[ext_resource type="Script" path="res://assets/weapons/weapon_stats.gd" id="3_damaq"]
-
-[sub_resource type="Resource" id="Resource_mud7v"]
-script = ExtResource("3_damaq")
-damage = 1.0
-bullets_per_shot = 1
-spread = 0.0
+[ext_resource type="PackedScene" uid="uid://dlrynqlvcsweg" path="res://assets/weapons/bullet/bullet.tscn" id="2_c8j0v"]
+[ext_resource type="Resource" uid="uid://na1vngttme26" path="res://assets/weapons/pistol/stats/pistol_basic.tres" id="3_q1716"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ppfsl"]
 animation = &"Fire"
@@ -33,7 +27,7 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_73k0n"]
 advance_mode = 2
-advance_expression = "reloading > 0"
+advance_expression = "reloading"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6dvq3"]
 switch_mode = 2
@@ -52,9 +46,9 @@ graph_offset = Vector2(-161, -29)
 
 [node name="Pistol" type="Node3D" node_paths=PackedStringArray("bullet_spawner")]
 script = ExtResource("1_ggipb")
-bullet_spawner = NodePath("Marker3D")
-bullet_scene = ExtResource("2_dnmwx")
-stats = SubResource("Resource_mud7v")
+bullet_spawner = NodePath("BulletShotLocation")
+bullet_scene = ExtResource("2_c8j0v")
+stats = ExtResource("3_q1716")
 reloading_amount = 1
 
 [node name="pistol" parent="." instance=ExtResource("2_a37vf")]
@@ -73,7 +67,7 @@ anim_player = NodePath("../pistol/AnimationPlayer")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0771178, 0.227656)
+[node name="BulletShotLocation" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075063, 0.227167)
 
 [editable path="pistol"]
