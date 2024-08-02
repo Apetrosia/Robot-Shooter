@@ -7,8 +7,6 @@ const JUMP_VELOCITY = 4.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-@export var mouse_sensivity: float = 0.01
-@export_range(0., 180., 0.5, "radians_as_degrees") var max_rotation_angle: float
 @export var weapons: Array[Node3D]
 var active_weapon_id: int = 0
 
@@ -25,13 +23,7 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if event is InputEventMouseMotion:
-		var shift: Vector2 = event.relative * mouse_sensivity
-		rotate_y(-shift.x)
-		var cam_rot = camera.rotation.x
-		camera.rotation.x = clampf(cam_rot - shift.y, -max_rotation_angle, max_rotation_angle)
-	elif event.is_action_pressed("fire"):
+	if event.is_action_pressed("fire"):
 		weapons[active_weapon_id].fire_on()
 	elif event.is_action_released("fire"):
 		weapons[active_weapon_id].fire_off()

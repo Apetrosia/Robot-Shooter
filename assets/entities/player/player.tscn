@@ -10,7 +10,6 @@
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("weapons")]
 script = ExtResource("1_cjcxm")
-max_rotation_angle = 0.645772
 weapons = [NodePath("Camera3D/Node3D/Shotgun"), NodePath("Camera3D/Node3D/Pistol"), NodePath("Camera3D/Node3D/Axe")]
 
 [node name="MouseLookComponent" parent="." node_paths=PackedStringArray("character_body", "camera_3d") instance=ExtResource("2_kopkw")]

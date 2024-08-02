@@ -77,7 +77,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = ExtResource("1_ugt0o")
 
 [node name="Player" parent="." instance=ExtResource("2_vqguo")]
-max_rotation_angle = 0.628319
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.255142, 0.966904, 0, -0.966904, 0.255142, 0, 2.87797, 3.40365)
