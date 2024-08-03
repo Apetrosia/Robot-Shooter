@@ -32,7 +32,7 @@ texture = ExtResource("1_okyv1")
 script = ExtResource("2_uxccl")
 game_scene = ExtResource("3_1m6nr")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Menu" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +40,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
@@ -49,25 +49,25 @@ theme_override_constants/margin_top = 128
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 128
 
-[node name="Background" type="Panel" parent="HBoxContainer/MarginContainer"]
+[node name="Background" type="Panel" parent="Menu/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_1lofi")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Menu/MarginContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Menu/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Крутой Шутер!!!
@@ -76,28 +76,118 @@ label_settings = SubResource("LabelSettings_q2mal")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Separator" type="Control" parent="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Separator" type="Control" parent="Menu/MarginContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="Start" type="Button" parent="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Start" type="Button" parent="Menu/MarginContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Начать игру"
 
-[node name="Settings" type="Button" parent="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="Menu/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Настройки"
 
-[node name="Quit" type="Button" parent="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="Menu/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Выйти"
 
-[node name="VozduhVPachkeChipso" type="Control" parent="HBoxContainer"]
+[node name="VozduhVPachkeChipsov" type="Control" parent="Menu"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="pressed" from="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="HBoxContainer/MarginContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="Settings" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 10
+
+[node name="TabContainer" type="TabContainer" parent="Settings/MarginContainer"]
+layout_mode = 2
+tab_alignment = 1
+
+[node name="Video" type="TabBar" parent="Settings/MarginContainer/TabContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer/TabContainer/Video"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Settings/MarginContainer/TabContainer/Video/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ddddddddddd"
+
+[node name="Audio" type="TabBar" parent="Settings/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SFX Volume" type="Label" parent="Settings/MarginContainer/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="HSlider" type="HSlider" parent="Settings/MarginContainer/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/MarginContainer/TabContainer/Audio/VBoxContainer"]
+layout_mode = 2
+
+[node name="Gameplay" type="TabBar" parent="Settings/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Controls" type="TabBar" parent="Settings/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Settings/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "OK"
+
+[connection signal="pressed" from="Menu/MarginContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

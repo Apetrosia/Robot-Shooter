@@ -1,0 +1,16 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://5bnn44r85f04"]
+
+[ext_resource type="Texture2D" uid="uid://bsnfleloicjy1" path="res://assets/levels/milky_way_skybox_hdri_panorama_0.png" id="1_isxe3"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_snmtc"]
+panorama = ExtResource("1_isxe3")
+
+[sub_resource type="Sky" id="Sky_441im"]
+sky_material = SubResource("PanoramaSkyMaterial_snmtc")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_441im")
+ambient_light_sky_contribution = 0.31
+tonemap_white = 4.25
+adjustment_brightness = 1.2

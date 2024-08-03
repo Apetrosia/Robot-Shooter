@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://devwe6ig7oqnf"]
+[gd_scene load_steps=13 format=3 uid="uid://devwe6ig7oqnf"]
 
 [ext_resource type="Script" path="res://assets/levels/level.gd" id="1_btjr4"]
 [ext_resource type="BoxMesh" uid="uid://bgdob7r6vcjl" path="res://assets/levels/wall_mesh.tres" id="2_2w6uy"]
+[ext_resource type="PackedScene" uid="uid://581a3fqjs0tg" path="res://assets/environment/world_environment.tscn" id="2_od54p"]
 [ext_resource type="PackedScene" uid="uid://0vbgcfauvifi" path="res://assets/entities/player/player.tscn" id="3_48mw2"]
 [ext_resource type="Script" path="res://assets/gamedesign/enemies_group.gd" id="4_ef0fe"]
 [ext_resource type="PackedScene" uid="uid://j6rf88mxs405" path="res://assets/entities/robot-2/robot-2.tscn" id="4_tri7o"]
@@ -27,6 +28,32 @@ size = Vector3(0.5, 4, 20)
 
 [node name="TestLevel" type="Node3D"]
 script = ExtResource("1_btjr4")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_od54p")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47327, 2.4959, 3.76612)
+light_color = Color(0.52549, 0.984314, 0.529412, 1)
+omni_range = 5.399
+omni_attenuation = 1.31951
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47327, 2.4959, -5.27194)
+light_color = Color(0.160784, 0.407843, 1, 1)
+omni_range = 5.399
+omni_attenuation = 1.31951
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34856, 2.4959, -5.27194)
+light_color = Color(1, 0.317647, 0.270588, 1)
+omni_range = 5.399
+omni_attenuation = 1.31951
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.34856, 2.4959, 2.80072)
+light_color = Color(1, 1, 0.329412, 1)
+omni_range = 5.399
+omni_attenuation = 1.31951
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
@@ -81,9 +108,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = ExtResource("2_2w6uy")
 
 [node name="Player" parent="." instance=ExtResource("3_48mw2")]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.255142, 0.966904, 0, -0.966904, 0.255142, 0, 2.87797, 3.40365)
 
 [node name="EnemiesGroup" type="Node3D" parent="."]
 script = ExtResource("4_ef0fe")

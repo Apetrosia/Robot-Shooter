@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	var tar_angle = atan2(direction.x, direction.z)
-	global_rotation.y = rotate_toward(global_rotation.y, tar_angle, 0.1) 
+	global_rotation.y = rotate_toward(global_rotation.y, tar_angle, 0.1)
 	move_and_slide()
 
 func die():
