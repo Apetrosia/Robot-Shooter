@@ -1,0 +1,158 @@
+[gd_scene load_steps=13 format=3 uid="uid://dkuqahm7qbs8n"]
+
+[ext_resource type="Script" path="res://assets/levels/level.gd" id="1_gf3qw"]
+[ext_resource type="BoxMesh" uid="uid://bgdob7r6vcjl" path="res://assets/levels/wall_mesh.tres" id="2_fdbe1"]
+[ext_resource type="PackedScene" uid="uid://0vbgcfauvifi" path="res://assets/entities/player/player.tscn" id="3_u0us5"]
+[ext_resource type="Script" path="res://assets/gamedesign/enemies_group.gd" id="4_8xmyd"]
+[ext_resource type="PackedScene" uid="uid://j6rf88mxs405" path="res://assets/entities/robot-2/robot-2.tscn" id="5_4p2vj"]
+[ext_resource type="PackedScene" uid="uid://b7mmpas8aqrf6" path="res://assets/door/door.tscn" id="6_5w8uc"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_v63gu"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vuxn8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fyifv"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_vuxn8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iymts"]
+albedo_texture = SubResource("NoiseTexture2D_fyifv")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hwyiu"]
+material = SubResource("StandardMaterial3D_iymts")
+size = Vector2(20, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y7iqm"]
+size = Vector3(0.5, 4, 20)
+
+[node name="TestLevel" type="Node3D"]
+script = ExtResource("1_gf3qw")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape3D_v63gu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.074)
+mesh = SubResource("PlaneMesh_hwyiu")
+
+[node name="Wall1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.20997, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_y7iqm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = ExtResource("2_fdbe1")
+
+[node name="Wall7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.20997, 0, -20)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_y7iqm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = ExtResource("2_fdbe1")
+
+[node name="Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.79003, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_y7iqm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = ExtResource("2_fdbe1")
+
+[node name="Wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.290027, 0, 9.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_y7iqm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = ExtResource("2_fdbe1")
+
+[node name="Wall5" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.00275759, 0, 0.999996, 0, 1, 0, -0.999996, 0, -0.00275759, 0.276947, 0, -29.2387)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_y7iqm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = ExtResource("2_fdbe1")
+
+[node name="Wall6" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.999996, 0, -0.00275763, 0, 1, 0, 0.00275763, 0, -0.999996, 9.80311, 0, -19.765)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_y7iqm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = ExtResource("2_fdbe1")
+
+[node name="Wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.93221, 0, -9.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_y7iqm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = ExtResource("2_fdbe1")
+
+[node name="Player" parent="." instance=ExtResource("3_u0us5")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.255142, 0.966904, 0, -0.966904, 0.255142, 0, 2.87797, 3.40365)
+
+[node name="EnemiesGroup" type="Node3D" parent="."]
+script = ExtResource("4_8xmyd")
+
+[node name="Robot-2" parent="EnemiesGroup" node_paths=PackedStringArray("player") instance=ExtResource("5_4p2vj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.31322, 0, -6.70955)
+player = NodePath("../../Player")
+
+[node name="Robot-3" parent="EnemiesGroup" node_paths=PackedStringArray("player") instance=ExtResource("5_4p2vj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53898, 0, -6.70955)
+player = NodePath("../../Player")
+
+[node name="Robot-4" parent="EnemiesGroup" node_paths=PackedStringArray("player") instance=ExtResource("5_4p2vj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.897282, 0, -6.70955)
+player = NodePath("../../Player")
+
+[node name="EnemiesGroup2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90268, 0, -17.1817)
+script = ExtResource("4_8xmyd")
+
+[node name="Robot-2" parent="EnemiesGroup2" node_paths=PackedStringArray("player") instance=ExtResource("5_4p2vj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.31322, 0, -6.70955)
+player = NodePath("../../Player")
+
+[node name="Robot-3" parent="EnemiesGroup2" node_paths=PackedStringArray("player") instance=ExtResource("5_4p2vj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53898, 0, -6.70955)
+player = NodePath("../../Player")
+
+[node name="Robot-4" parent="EnemiesGroup2" node_paths=PackedStringArray("player") instance=ExtResource("5_4p2vj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.897282, 0, -6.70955)
+player = NodePath("../../Player")
+
+[node name="Door" parent="." instance=ExtResource("6_5w8uc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.91574, 0, -9.39468)
+
+[connection signal="all_killed" from="EnemiesGroup" to="Door" method="open"]
+[connection signal="all_killed" from="EnemiesGroup2" to="." method="_on_level_finished"]

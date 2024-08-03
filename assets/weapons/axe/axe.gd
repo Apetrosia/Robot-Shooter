@@ -6,10 +6,13 @@ class_name Axe
 @export var shooter: CharacterBody3D
 
 var can_attack: bool = false
+func _on_body_entered(body: Node3D) -> void:
+	if body == shooter:
+		return
+	HealthComponent.try_take_damage(body, damage, self)
 
 func fire_on():
 	can_attack = true
-	print("CAN ATTACK ", can_attack)
 	
 func fire_off():
 	can_attack = false
@@ -17,8 +20,3 @@ func fire_off():
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animation_tree.active = true
-
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

@@ -9,7 +9,7 @@ class_name MouseLookComponent
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event is InputEventMouseMotion:
 		var shift: Vector2 = event.relative * mouse_sensivity
 		character_body.rotate_y(-shift.x)

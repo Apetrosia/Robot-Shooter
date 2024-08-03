@@ -14,14 +14,12 @@ var shooter: CharacterBody3D:
 		add_collision_exception_with(value)
 		shooter = value
 
-
 func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(basis.z*delta*SPEED)
 	if collision:
 		for i in range(collision.get_collision_count()):
 			var collider = collision.get_collider(i)
-			if "take_damage" in collider && collider.take_damage is Callable:
-				collider.take_damage(damage, self)
+			HealthComponent.try_take_damage(collider, damage, self)
 		queue_free()
 	ttl-=delta
 	if ttl<0:

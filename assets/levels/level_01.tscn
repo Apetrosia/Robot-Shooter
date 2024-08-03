@@ -1,9 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://dv7yjyvjvkldi"]
+[gd_scene load_steps=15 format=3 uid="uid://dv7yjyvjvkldi"]
 
 [ext_resource type="Script" path="res://assets/levels/level.gd" id="1_a527u"]
 [ext_resource type="BoxMesh" uid="uid://bgdob7r6vcjl" path="res://assets/levels/wall_mesh.tres" id="1_ugt0o"]
 [ext_resource type="PackedScene" uid="uid://0vbgcfauvifi" path="res://assets/entities/player/player.tscn" id="2_vqguo"]
+[ext_resource type="Texture2D" uid="uid://bsnfleloicjy1" path="res://assets/levels/milky_way_skybox_hdri_panorama_0.png" id="2_x044f"]
 [ext_resource type="PackedScene" uid="uid://j6rf88mxs405" path="res://assets/entities/robot-2/robot-2.tscn" id="3_oxsdt"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_snmtc"]
+panorama = ExtResource("2_x044f")
+
+[sub_resource type="Sky" id="Sky_441im"]
+sky_material = SubResource("PanoramaSkyMaterial_snmtc")
+
+[sub_resource type="Environment" id="Environment_u0sy3"]
+background_mode = 2
+sky = SubResource("Sky_441im")
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_v63gu"]
 
@@ -26,6 +37,9 @@ size = Vector3(0.5, 4, 20)
 
 [node name="TestLevel" type="Node3D"]
 script = ExtResource("1_a527u")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u0sy3")
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
@@ -80,9 +94,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 mesh = ExtResource("1_ugt0o")
 
 [node name="Player" parent="." instance=ExtResource("2_vqguo")]
-
-[node name="Pistol" parent="Player/Camera3D/Node3D" index="2" node_paths=PackedStringArray("shooter")]
-shooter = NodePath("../../..")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.255142, 0.966904, 0, -0.966904, 0.255142, 0, 2.87797, 3.40365)

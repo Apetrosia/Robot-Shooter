@@ -6,9 +6,6 @@ class_name Gun
 @export var stats: WeaponStats
 
 @export var shooter: CharacterBody3D
-@export var bullet_amount = 4
-@export var reloading_amount = 4
-
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 

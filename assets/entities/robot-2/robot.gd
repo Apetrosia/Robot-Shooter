@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name Robot
 
 signal died
 
@@ -6,20 +7,23 @@ const SPEED = 3.0
 const JUMP_VELOCITY = 4.5
 
 @export var player: Player
-@export var max_hp: float
-
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var animation_player: AnimationPlayer = $"robot-2/AnimationPlayer"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var hp: float = max_hp
-
+func _ready() -> void:
+	health_component.died.connect(die)
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	if health_component.hp <= 0:
+		return
+	if global_position.distance_to(player.global_position) < 5:
+		animation_player.play("Axe_Fire")
+	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	get_node_or_null(^"HealthComponent")
 
 	var direction := global_position.direction_to(player.global_position)
 	if direction:
@@ -33,5 +37,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func die():
+	animation_player.play("Custom/Dead")
+
+func on_dead_end():
 	died.emit()
 	queue_free()

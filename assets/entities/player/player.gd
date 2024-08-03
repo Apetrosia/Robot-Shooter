@@ -5,16 +5,18 @@ const SPEED = 5.0
 const ACCELERATION = 1.75
 const JUMP_VELOCITY = 4.5
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var weapons: Array[Node3D]
+
+var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var active_weapon_id: int = 0
 
+
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var hp_label: Label = $HUD/HPLabel
 @onready var camera: Camera3D = %Camera3D
 
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_INHERIT
 	weapons[active_weapon_id].show()
 	for i in range(1, weapons.size()):
@@ -76,3 +78,6 @@ func _physics_process(delta: float) -> void:
 		velocity.z *= ACCELERATION
 
 	move_and_slide()
+
+func _process(delta: float) -> void:
+	hp_label.text = "HP: " + str(health_component.hp)
