@@ -34,18 +34,17 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.1293
 
 [node name="Shotgun" parent="Camera3D/Node3D" node_paths=PackedStringArray("shooter") instance=ExtResource("2_84xy3")]
 process_mode = 4
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49012e-08, 0, 0.0942334)
 shooter = NodePath("../../..")
 
 [node name="Axe" parent="Camera3D/Node3D" node_paths=PackedStringArray("shooter") instance=ExtResource("3_fo0do")]
 process_mode = 4
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.133753, 0, -5.96046e-08)
-visible = false
 shooter = NodePath("../../..")
 
 [node name="Pistol" parent="Camera3D/Node3D" node_paths=PackedStringArray("shooter") instance=ExtResource("4_j1rbx")]
 process_mode = 4
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47035e-08, 0.0622588, 0.113758)
 shooter = NodePath("../../..")
 
 [node name="Node3D" type="Node3D" parent="."]

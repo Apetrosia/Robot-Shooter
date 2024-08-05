@@ -42,7 +42,7 @@ states/Idle/position = Vector2(355.286, 101.784)
 states/Reload/node = SubResource("AnimationNodeAnimation_w57yg")
 states/Reload/position = Vector2(355.286, 4)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ccoe8"), "Idle", "Fire", SubResource("AnimationNodeStateMachineTransition_3wpbw"), "Fire", "Idle", SubResource("AnimationNodeStateMachineTransition_3q5kc"), "Idle", "Reload", SubResource("AnimationNodeStateMachineTransition_73k0n"), "Reload", "Idle", SubResource("AnimationNodeStateMachineTransition_6dvq3")]
-graph_offset = Vector2(-161, -29)
+graph_offset = Vector2(-188, -16)
 
 [node name="Pistol" type="Node3D" node_paths=PackedStringArray("bullet_spawner")]
 script = ExtResource("1_ggipb")

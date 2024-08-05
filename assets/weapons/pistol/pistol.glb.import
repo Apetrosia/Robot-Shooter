@@ -33,7 +33,7 @@ _subresources={
 "animations": {
 "Fire": {
 "save_to_file/enabled": true,
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://assets/weapons/pistol/anim/Fire.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -1832,7 +1832,7 @@ _subresources={
 },
 "Idle": {
 "save_to_file/enabled": true,
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://assets/weapons/pistol/anim/Idle.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
@@ -3631,7 +3631,7 @@ _subresources={
 },
 "Reload": {
 "save_to_file/enabled": true,
-"save_to_file/keep_custom_tracks": "",
+"save_to_file/keep_custom_tracks": true,
 "save_to_file/path": "res://assets/weapons/pistol/anim/Reload.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,

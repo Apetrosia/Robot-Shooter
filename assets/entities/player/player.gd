@@ -31,14 +31,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		weapons[active_weapon_id].fire_off()
 	elif event.is_action_pressed("reload"):
 		if active_weapon_id != 2:
-			weapons[active_weapon_id].reload(weapons[active_weapon_id].reloading_amount)
+			weapons[active_weapon_id].reload(weapons[active_weapon_id].stats.reloading_amount)
 		
 	if Input.is_action_just_pressed("shotgun"):
 		weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_DISABLED
-		weapons[active_weapon_id].hide();
+		weapons[active_weapon_id].hide()
 		active_weapon_id = 0
 		weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_INHERIT
-		weapons[active_weapon_id].show();
+		weapons[active_weapon_id].show()
 	if Input.is_action_just_pressed("pistol"):
 		weapons[active_weapon_id].process_mode = Node.PROCESS_MODE_DISABLED
 		weapons[active_weapon_id].hide();

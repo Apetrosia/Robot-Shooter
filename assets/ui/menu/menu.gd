@@ -17,3 +17,13 @@ func _on_quit_pressed() -> void:
 func _on_settings_pressed() -> void:
 	menu.visible = !menu.visible
 	settings.visible = !settings.visible
+
+
+func _on_ok_pressed() -> void:
+	menu.visible = !menu.visible
+	settings.visible = !settings.visible
+
+
+func _on_cancel_pressed() -> void:
+	menu.visible = !menu.visible
+	settings.visible = !settings.visible

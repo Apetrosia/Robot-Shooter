@@ -169,3 +169,5 @@ anim_player = NodePath("../axe/AnimationPlayer")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(0.995118, -0.0986773, -0.00184473, 0, 0.0186914, -0.999825, 0.0986945, 0.994944, 0.0186001, -0.00218578, 0.90622, 0)
 shape = SubResource("CapsuleShape3D_mtc4c")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://i1l1qf4hpj4q"]
+[gd_scene load_steps=7 format=3 uid="uid://i1l1qf4hpj4q"]
 
+[ext_resource type="Theme" uid="uid://2hgjbonddwlt" path="res://assets/ui/ui_theme/MinimalUI.tres" id="1_kgeay"]
 [ext_resource type="Texture2D" uid="uid://b2gaaal8uimav" path="res://icon.svg" id="1_okyv1"]
-[ext_resource type="Script" path="res://assets/menu/menu.gd" id="2_uxccl"]
+[ext_resource type="Script" path="res://assets/ui/menu/menu.gd" id="2_uxccl"]
 [ext_resource type="PackedScene" uid="uid://bt3y5jo7u0ald" path="res://assets/game/game.tscn" id="3_1m6nr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lofi"]
@@ -28,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_kgeay")
 texture = ExtResource("1_okyv1")
 script = ExtResource("2_uxccl")
 game_scene = ExtResource("3_1m6nr")
@@ -120,74 +122,97 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 10
 
-[node name="TabContainer" type="TabContainer" parent="Settings/MarginContainer"]
-layout_mode = 2
-tab_alignment = 1
-
-[node name="Video" type="TabBar" parent="Settings/MarginContainer/TabContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer/TabContainer/Video"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Settings/MarginContainer/TabContainer/Video/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "ddddddddddd"
-
-[node name="Audio" type="TabBar" parent="Settings/MarginContainer/TabContainer"]
-visible = false
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer/TabContainer/Audio"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SFX Volume" type="Label" parent="Settings/MarginContainer/TabContainer/Audio/VBoxContainer"]
-layout_mode = 2
-text = "SFX Volume"
-
-[node name="HSlider" type="HSlider" parent="Settings/MarginContainer/TabContainer/Audio/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Settings/MarginContainer/TabContainer/Audio/VBoxContainer"]
-layout_mode = 2
-
-[node name="Gameplay" type="TabBar" parent="Settings/MarginContainer/TabContainer"]
-visible = false
-layout_mode = 2
-
-[node name="Controls" type="TabBar" parent="Settings/MarginContainer/TabContainer"]
-visible = false
-layout_mode = 2
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer"]
-visible = false
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Settings/MarginContainer/VBoxContainer"]
+[node name="TabContainer" type="TabContainer" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 1
+
+[node name="Video" type="TabBar" parent="Settings/MarginContainer/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Video"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Video/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ddddddddddd"
+
+[node name="Audio" type="TabBar" parent="Settings/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer"]
+layout_mode = 2
+
+[node name="SFX Volume" type="Label" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="HSlider" type="HSlider" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/MarginContainer/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Gameplay" type="TabBar" parent="Settings/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Controls" type="TabBar" parent="Settings/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Ok" type="Button" parent="Settings/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "OK"
+
+[node name="Cancel" type="Button" parent="Settings/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
 
 [connection signal="pressed" from="Menu/MarginContainer/MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Menu/MarginContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Menu/MarginContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Settings/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Ok" to="." method="_on_ok_pressed"]
+[connection signal="pressed" from="Settings/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
