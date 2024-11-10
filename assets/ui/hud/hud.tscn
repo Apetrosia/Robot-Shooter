@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6k68vxlpwvo0"]
+
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="1_l5s7c"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Walk Joystick" parent="." instance=ExtResource("1_l5s7c")]
+anchors_preset = -1
+anchor_top = 0.475309
+anchor_right = 0.295139
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_forward"
+action_down = "move_backward"
+
+[node name="Base" parent="Walk Joystick" index="0"]
+expand_mode = 3
+stretch_mode = 0
+
+[node name="Tip" parent="Walk Joystick/Base" index="0"]
+expand_mode = 3
+stretch_mode = 0
+
+[node name="Sprint" type="TouchScreenButton" parent="."]
+action = "Run"
+
+[node name="Reload" type="TouchScreenButton" parent="."]
+action = "Reload"
+
+[editable path="Walk Joystick"]

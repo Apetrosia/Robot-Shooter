@@ -3850,7 +3850,7 @@ instance_shader_parameters/dead = 0.0
 mesh = SubResource("ArrayMesh_qii7w")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="robot-2/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.97994, 0.0349098, -0.196213, 0.155754, -0.748379, 0.644725, -0.124335, -0.662352, -0.738803, -0.0505629, 0.504713, 0.469652)
+transform = Transform3D(0.97994, 0.0349098, -0.196213, 0.155754, -0.748379, 0.644724, -0.124335, -0.662352, -0.738804, -0.050563, 0.504713, 0.469652)
 bone_name = "Item"
 bone_idx = 11
 

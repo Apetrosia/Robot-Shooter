@@ -124,4 +124,7 @@ player = NodePath("../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.897282, 0, -6.70955)
 player = NodePath("../../Player")
 
+[node name="OmniLight3D5" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9002, 4.14838, -2.10712)
+
 [connection signal="all_killed" from="EnemiesGroup" to="." method="_on_level_finished"]

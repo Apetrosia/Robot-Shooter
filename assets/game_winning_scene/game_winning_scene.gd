@@ -2,17 +2,14 @@ extends Node
 class_name GameWinningScene
 
 
-@export_file("*.tscn") var game_scene: String
-@export_file("*.tscn") var menu_scene: String
-
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 
 func restart() -> void:
-	get_tree().change_scene_to_file(game_scene)
+	get_tree().change_scene_to_packed(Scenes.game)
 
 
 func back_to_menu() -> void:
-	get_tree().change_scene_to_file(menu_scene)
+	get_tree().change_scene_to_packed(Scenes.menu)

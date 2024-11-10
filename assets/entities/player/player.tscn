@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://0vbgcfauvifi"]
+[gd_scene load_steps=9 format=3 uid="uid://0vbgcfauvifi"]
 
 [ext_resource type="Script" path="res://assets/entities/player/player.gd" id="1_cjcxm"]
 [ext_resource type="PackedScene" uid="uid://beotlskjlwbyc" path="res://assets/weapons/shotgun/shotgun.tscn" id="2_84xy3"]
-[ext_resource type="PackedScene" uid="uid://ohap0wr7hitl" path="res://addons/mouse_look_component/mouse_look_component.tscn" id="2_kopkw"]
+[ext_resource type="PackedScene" uid="uid://ohap0wr7hitl" path="res://addons/mouse_look_component/mouse_look_component.tscn" id="2_pc77h"]
 [ext_resource type="PackedScene" uid="uid://ci1m4p3dnfnt6" path="res://assets/weapons/axe/axe.tscn" id="3_fo0do"]
 [ext_resource type="Script" path="res://assets/entities/health_component.gd" id="3_yi5wu"]
 [ext_resource type="PackedScene" uid="uid://da3emtm7agpyx" path="res://assets/weapons/pistol/pistol.tscn" id="4_j1rbx"]
+[ext_resource type="PackedScene" uid="uid://b6k68vxlpwvo0" path="res://assets/ui/hud/hud.tscn" id="7_boi5d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oappw"]
 
@@ -17,7 +18,7 @@ weapons = [NodePath("Camera3D/Node3D/Shotgun"), NodePath("Camera3D/Node3D/Pistol
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13231, 0)
 shape = SubResource("CapsuleShape3D_oappw")
 
-[node name="MouseLookComponent" parent="." node_paths=PackedStringArray("character_body", "camera_3d") instance=ExtResource("2_kopkw")]
+[node name="MouseLookComponent" parent="." node_paths=PackedStringArray("character_body", "camera_3d") instance=ExtResource("2_pc77h")]
 character_body = NodePath("..")
 camera_3d = NodePath("../Camera3D")
 max_rotation_angle = 0.785398
@@ -69,3 +70,7 @@ offset_right = 58.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "HP: 100"
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="HUD2" parent="." instance=ExtResource("7_boi5d")]

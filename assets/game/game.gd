@@ -2,7 +2,6 @@ extends Node
 
 
 @export var campaign: Campaign
-@export var game_winning_scene: PackedScene
 @onready var level_root: Node = $Level
 
 var current_level = -1
@@ -16,8 +15,7 @@ func _ready() -> void:
 func next_level():
 	current_level+=1
 	if current_level >= campaign.levels.size():
-		print_debug(game_winning_scene)
-		get_tree().change_scene_to_packed.bind(game_winning_scene).call_deferred()
+		get_tree().change_scene_to_packed.bind(Scenes.game_winning).call_deferred()
 		return
 	if current_level_node:
 		level_root.remove_child(current_level_node)

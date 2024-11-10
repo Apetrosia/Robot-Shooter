@@ -1,0 +1,12 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvfapqiho8jeo"]
+
+[ext_resource type="Script" path="res://src/scenes.gd" id="1_slkpr"]
+[ext_resource type="PackedScene" uid="uid://i1l1qf4hpj4q" path="res://assets/ui/menu/menu.tscn" id="2_oddi2"]
+[ext_resource type="PackedScene" uid="uid://d1f8j37p8cwgu" path="res://assets/game_winning_scene/game_winning_scene.tscn" id="3_1rwhb"]
+[ext_resource type="PackedScene" uid="uid://bt3y5jo7u0ald" path="res://assets/game/game.tscn" id="4_0kfm4"]
+
+[node name="Scenes" type="Node"]
+script = ExtResource("1_slkpr")
+menu = ExtResource("2_oddi2")
+game_winning = ExtResource("3_1rwhb")
+game = ExtResource("4_0kfm4")

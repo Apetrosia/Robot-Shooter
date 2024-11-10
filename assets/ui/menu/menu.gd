@@ -1,13 +1,12 @@
 extends TextureRect
 
 
-@export var game_scene: PackedScene
 @onready var menu: HBoxContainer = $Menu
 @onready var settings: Panel = $Settings
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_packed(game_scene)
+	get_tree().change_scene_to_packed(Scenes.game)
 
 
 func _on_quit_pressed() -> void:
